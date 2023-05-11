@@ -67,9 +67,12 @@ yarn global add parse-server
 
 #nohup parse-server config.json &
 
+#create service
+
 wget https://raw.githubusercontent.com/badr42/parse_on_OCI/main/parse.server.dashboard.service
 mv parse.server.dashboard.service /etc/systemd/system/parse.server.dashboard.service
-#nano parse.server.service //replace with curl /etc/systemd/system/
+
+
 
 systemctl start parse.server.service
 
@@ -101,7 +104,6 @@ sed -i "s/parserpass/$pass/g" parse-dashboard-config.json
 
 
 systemctl start parse.server.service
-
 
 systemctl start parse.server.dashboard.service
 systemctl enable parse.server.dashboard.service

@@ -44,4 +44,5 @@ variable "AD_number" {
 
 variable "Parse_pass" {
   description = "Parse password"
+  default     = "pass"
 }
