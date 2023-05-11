@@ -1,8 +1,7 @@
 #!/bin/bash
+ 
 
-sudo su - 
-
-
+pass=$1
 
 echo "waiting for the network set up to complete"
 sleep 10
@@ -25,6 +24,10 @@ sudo iptables -F
 DEBIAN_FRONTEND=noninteractive sudo apt-get update
 DEBIAN_FRONTEND=noninteractive apt-get upgrade -y
 DEBIAN_FRONTEND=noninteractive apt-get install -y vim
+
+
+wget https://raw.githubusercontent.com/badr42/parse_on_OCI/main/config.json
+wget https://raw.githubusercontent.com/badr42/parse_on_OCI/main/parse-dashboard-config.json
 
 
 ##install mongo
@@ -60,9 +63,12 @@ node --version
 yarn global add parse-server
 #nano config.json  //replace with curl
 
-nohup parse-server config.json &
 
 
+#nohup parse-server config.json &
+
+wget https://raw.githubusercontent.com/badr42/parse_on_OCI/main/parse.server.dashboard.service
+mv parse.server.dashboard.service /etc/systemd/system/parse.server.dashboard.service
 #nano parse.server.service //replace with curl /etc/systemd/system/
 
 systemctl start parse.server.service
@@ -75,10 +81,15 @@ systemctl enable parse.server.service
 ##dashboard
 
 yarn global add parse-dashboard
+
+
+wget https://raw.githubusercontent.com/badr42/parse_on_OCI/main/parse.server.service
+mv parse.server.service /etc/systemd/system/parse.server.service
+
 #nano parse-dashboard-config.json  //replace with curl
 
-sed -i "s/locahost/$myip/g" 
-
+sed -i "s/locahost/$myip/g" parse-dashboard-config.json
+sed -i "s/parserpass/$pass/g" parse-dashboard-config.json
 
 #start dashboard
 nohup parse-dashboard --dev --config parse-dashboard-config.json &
