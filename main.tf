@@ -56,7 +56,9 @@ resource "oci_core_instance" "instance" {
     inline = [
       "export pass=${var.Parse_pass}",
       "sudo su - ",
-      "wget -qO - 'https://raw.githubusercontent.com/badr42/parse_on_OCI/main/install.sh' | bash -s ${var.Parse_pass}",
+      "wget https://raw.githubusercontent.com/badr42/parse_on_OCI/main/install.sh",
+      "bash install.sh ${var.Parse_pass}",
+      //"wget -qO - 'https://raw.githubusercontent.com/badr42/parse_on_OCI/main/install.sh' | bash -s ${var.Parse_pass}",
     ]
   }
 }
