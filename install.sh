@@ -100,7 +100,7 @@ sed -i "s/parserpass/$pass/g" parse-dashboard-config.json
 
 ##nano parse.server.dashboard.service  //replace with curl /etc/systemd/system/
 
-
+systemctl daemon-reload
 
 
 systemctl start parse.server.service
