@@ -42,6 +42,6 @@ variable "AD_number" {
 }
 
 
-variable "Node_red_pass" {
-  description = "Node Red Admin password"
+variable "Parse_pass" {
+  description = "Parse password"
 }

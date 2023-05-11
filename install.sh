@@ -22,8 +22,8 @@ sudo iptables -P FORWARD ACCEPT
 sudo iptables -F
 
 DEBIAN_FRONTEND=noninteractive sudo apt-get update
-DEBIAN_FRONTEND=noninteractive apt-get upgrade -y
-DEBIAN_FRONTEND=noninteractive apt-get install -y vim
+DEBIAN_FRONTEND=noninteractive apt upgrade -y
+DEBIAN_FRONTEND=noninteractive apt install -y vim
 
 
 wget https://raw.githubusercontent.com/badr42/parse_on_OCI/main/config.json
@@ -48,7 +48,7 @@ systemctl status mongod
 ###install nodejs
 
 curl -sL https://deb.nodesource.com/setup_lts.x | bash -
-DEBIAN_FRONTEND=noninteractive apt-get install nodejs -y
+DEBIAN_FRONTEND=noninteractive apt install nodejs -y
 npm install -g yarn
 
 
@@ -108,5 +108,3 @@ systemctl enable parse.server.dashboard.service
 
 
 echo "Completed setup"
-
-
