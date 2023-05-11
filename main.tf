@@ -56,7 +56,7 @@ resource "oci_core_instance" "instance" {
     inline = [
       "sudo su - ",
       "wget https://raw.githubusercontent.com/badr42/parse_on_OCI/main/install.sh",
-      "chmod 777 install.sh"
+      "chmod 777 install.sh",
       "sh install.sh ${var.Parse_pass}",
       //"wget -qO - 'https://raw.githubusercontent.com/badr42/parse_on_OCI/main/install.sh' | bash -s ${var.Parse_pass}",
     ]
