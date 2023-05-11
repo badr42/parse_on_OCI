@@ -1,0 +1,18 @@
+{
+    "apps": [
+      {
+        "serverURL": "http://127.0.0.1:1337/parse",
+        "appId": "SCWASRTWK9Y6AVMP3KFC",
+        "masterKey": "LASDK823JKHR87SDFJSDHF8DFHASFDF",
+        "allowInsecureHTTP": "true",
+        "appName": "ParseApp"
+      }
+    ],
+  "users": [
+      {
+        "user":"parser",
+        "pass":"parserpass"
+      }
+    ],
+    "iconsFolder": "icons"
+}

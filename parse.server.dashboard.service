@@ -1,0 +1,12 @@
+[Unit]
+Description=Parse Server Dashboard service
+After=parse.server.service
+StartLimitIntervalSec=0
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+User=root
+ExecStart=parse-dashboard --dev --config /root/parse-dashboard-config.json
+[Install]
+WantedBy=multi-user.target

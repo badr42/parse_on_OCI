@@ -1,0 +1,12 @@
+[Unit]
+Description=Parse Server service
+After=mongodb.service
+StartLimitIntervalSec=0
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+User=root
+ExecStart=parse-server /root/config.json
+[Install]
+WantedBy=multi-user.target

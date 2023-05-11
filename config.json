@@ -1,0 +1,10 @@
+{
+    "appName": "Parse Server Application",
+    "databaseURI": "mongodb://127.0.0.1:27017/parsedb",
+    "appId": "SCWASRTWK9Y6AVMP3KFC",
+    "masterKey": "LASDK823JKHR87SDFJSDHF8DFHASFDF",
+    "serverURL": "http://127.0.0.1:1337/parse",
+    "publicServerURL": "http://0.0.0.0:1337/parse",
+    "port": 1337,
+    "masterKeyIps": ["0.0.0.0/0"]
+}
