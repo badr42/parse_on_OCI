@@ -21,7 +21,7 @@ sudo iptables -P OUTPUT ACCEPT
 sudo iptables -P FORWARD ACCEPT
 sudo iptables -F
 
-DEBIAN_FRONTEND=noninteractive sudo apt-get update
+DEBIAN_FRONTEND=noninteractive sudo apt update
 DEBIAN_FRONTEND=noninteractive apt upgrade -y
 DEBIAN_FRONTEND=noninteractive apt install -y vim
 
@@ -73,7 +73,7 @@ mv parse.server.dashboard.service /etc/systemd/system/parse.server.dashboard.ser
 
 systemctl start parse.server.service
 
-systemctl status parse.server.service
+systemctl status parse.server.servicevi
 systemctl enable parse.server.service
 
 
