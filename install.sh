@@ -92,10 +92,15 @@ sed -i "s/locahost/$myip/g" parse-dashboard-config.json
 sed -i "s/parserpass/$pass/g" parse-dashboard-config.json
 
 #start dashboard
-nohup parse-dashboard --dev --config parse-dashboard-config.json &
+#nohup parse-dashboard --dev --config parse-dashboard-config.json &
 #ss -ant | grep 4040
 
 ##nano parse.server.dashboard.service  //replace with curl /etc/systemd/system/
+
+
+
+
+systemctl start parse.server.service
 
 
 systemctl start parse.server.dashboard.service
