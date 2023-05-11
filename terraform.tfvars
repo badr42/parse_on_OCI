@@ -1,4 +1,4 @@
-instance_name       = "NodeRed-MQTT"
+instance_name       = "Parse_Server"
 instance_shape      = "VM.Standard.E4.Flex"
 ssh_public_key_path = "server.key.pub"
 ssh_private_key_path = "server.key"
