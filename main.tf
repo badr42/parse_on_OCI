@@ -47,7 +47,7 @@ resource "oci_core_instance" "instance" {
 
   connection {
     type        = "ssh"
-    host        = "${self.public_ip}"
+    host        = self.public_ip
     user        = "ubuntu"
     private_key = "${file(var.ssh_private_key_path)}"
   }
