@@ -32,7 +32,7 @@ wget https://raw.githubusercontent.com/badr42/parse_on_OCI/main/parse-dashboard-
 
 ##install mongo
 
-curl -fsSL https://www.mongodb.org/static/pgp/server-6.0.asc|sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/mongodb-6.gpg
+curl -fsSL https://www.mongodb.org/static/pgp/server-6.0.asc|sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/mongodb-6.gpg -y
 
 echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu $(lsb_release -cs)/mongodb-org/6.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-6.0.list
 
@@ -40,15 +40,16 @@ DEBIAN_FRONTEND=noninteractive apt update -y
 DEBIAN_FRONTEND=noninteractive apt install mongodb-org -y
 systemctl enable --now mongod
 systemctl start mongod
-systemctl status mongod
+#systemctl status mongod
 
 #mongod --version
 
 
 ###install nodejs
-
-curl -sL https://deb.nodesource.com/setup_lts.x | bash -
-DEBIAN_FRONTEND=noninteractive apt install nodejs -y
+sudo apt-get update
+sudo su - 
+sudo curl -sL https://deb.nodesource.com/setup_lts.x | bash -
+sudo DEBIAN_FRONTEND=noninteractive apt install nodejs -y
 npm install -g yarn
 
 
@@ -76,7 +77,7 @@ mv parse.server.dashboard.service /etc/systemd/system/parse.server.dashboard.ser
 
 systemctl start parse.server.service
 
-systemctl status parse.server.servicevi
+#systemctl status parse.server.service
 systemctl enable parse.server.service
 
 
@@ -91,8 +92,8 @@ mv parse.server.service /etc/systemd/system/parse.server.service
 
 #nano parse-dashboard-config.json  //replace with curl
 
-sed -i "s/localhost/$myip/g" parse-dashboard-config.json
-sed -i "s/parserpass/$pass/g" parse-dashboard-config.json
+sed -i "s/localhost/$myip/g" /home/ubuntu/parse-dashboard-config.json
+sed -i "s/parserpass/$pass/g" /home/ubuntu/parse-dashboard-config.json
 
 #start dashboard
 #nohup parse-dashboard --dev --config parse-dashboard-config.json &
