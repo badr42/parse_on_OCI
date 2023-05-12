@@ -91,7 +91,7 @@ mv parse.server.service /etc/systemd/system/parse.server.service
 
 #nano parse-dashboard-config.json  //replace with curl
 
-sed -i "s/locahost/$myip/g" parse-dashboard-config.json
+sed -i "s/localhost/$myip/g" parse-dashboard-config.json
 sed -i "s/parserpass/$pass/g" parse-dashboard-config.json
 
 #start dashboard
