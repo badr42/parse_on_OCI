@@ -54,10 +54,10 @@ resource "oci_core_instance" "instance" {
 
   provisioner "remote-exec" {
     inline = [
-      "sudo su - ",
+      ">test.log",
       "wget https://raw.githubusercontent.com/badr42/parse_on_OCI/main/install.sh",
       "chmod 777 install.sh",
-      "sh install.sh ${var.Parse_pass}",
+      "sudo sh install.sh ${var.Parse_pass}",
       //"wget -qO - 'https://raw.githubusercontent.com/badr42/parse_on_OCI/main/install.sh' | bash -s ${var.Parse_pass}",
     ]
   }
@@ -139,7 +139,7 @@ output "instance_public_ip" {
   
   Wait 5 minutes for the instance to be ready.
 
-  Login into http://${oci_core_instance.instance.public_ip}:1880
+  Login into http://${oci_core_instance.instance.public_ip}:4040
 
   MQTT server can be connected to at ${oci_core_instance.instance.public_ip}:1883
 

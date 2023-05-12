@@ -7,6 +7,6 @@ Type=simple
 Restart=always
 RestartSec=1
 User=root
-ExecStart=parse-dashboard --dev --config /root/parse-dashboard-config.json
+ExecStart=parse-dashboard --dev --config /home/ubuntu/parse-dashboard-config.json
 [Install]
 WantedBy=multi-user.target

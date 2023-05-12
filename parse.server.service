@@ -7,6 +7,6 @@ Type=simple
 Restart=always
 RestartSec=1
 User=root
-ExecStart=parse-server /root/config.json
+ExecStart=parse-server /home/ubuntu/config.json
 [Install]
 WantedBy=multi-user.target
