@@ -37,6 +37,7 @@ resource "oci_core_instance" "instance" {
     ssh_authorized_keys = file(var.ssh_public_key_path)
     user_data           = base64encode(file("install.sh"))
   }
+  
   shape_config {
         #Optional
         # memory_in_gbs = "16"

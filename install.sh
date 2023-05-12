@@ -22,8 +22,8 @@ sudo iptables -P FORWARD ACCEPT
 sudo iptables -F
 
 DEBIAN_FRONTEND=noninteractive sudo apt update
-DEBIAN_FRONTEND=noninteractive apt upgrade -y
-DEBIAN_FRONTEND=noninteractive apt install -y vim
+DEBIAN_FRONTEND=noninteractive sudo  apt upgrade -y
+DEBIAN_FRONTEND=noninteractive sudo apt install -y vim
 
 
 wget https://raw.githubusercontent.com/badr42/parse_on_OCI/main/config.json
@@ -32,14 +32,14 @@ wget https://raw.githubusercontent.com/badr42/parse_on_OCI/main/parse-dashboard-
 
 ##install mongo
 
-curl -fsSL https://www.mongodb.org/static/pgp/server-6.0.asc|sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/mongodb-6.gpg -y
+sudo curl -fsSL https://www.mongodb.org/static/pgp/server-6.0.asc|sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/mongodb-6.gpg 
 
-echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu $(lsb_release -cs)/mongodb-org/6.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-6.0.list
+sudo echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu $(lsb_release -cs)/mongodb-org/6.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-6.0.list
 
-DEBIAN_FRONTEND=noninteractive apt update -y
-DEBIAN_FRONTEND=noninteractive apt install mongodb-org -y
-systemctl enable --now mongod
-systemctl start mongod
+DEBIAN_FRONTEND=noninteractive sudo apt update -y
+DEBIAN_FRONTEND=noninteractive sudo apt install mongodb-org -y
+DEBIAN_FRONTEND=noninteractive sudo systemctl enable --now mongod
+DEBIAN_FRONTEND=noninteractive sudo systemctl start mongod
 #systemctl status mongod
 
 #mongod --version
@@ -49,11 +49,12 @@ systemctl start mongod
 sudo apt-get update
 sudo su - 
 sudo curl -sL https://deb.nodesource.com/setup_lts.x | bash -
-sudo DEBIAN_FRONTEND=noninteractive apt install nodejs -y
-npm install -g yarn
+DEBIAN_FRONTEND=noninteractive sudo apt install nodejs -y
+DEBIAN_FRONTEND=noninteractive sudo apt install npm -y
+DEBIAN_FRONTEND=noninteractive npm install -g yarn
 
 
-node --version
+#node --version
 
 
 
