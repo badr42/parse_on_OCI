@@ -3,7 +3,7 @@
 
 
 **Parse** 
-
+Parse is an open-source mobile Backend as a Service (MBaaS) that simplifies backend development and allows developers to focus on building the frontend of their mobile applications. It provides developers with a cloud-based infrastructure that enables them to build scalable and feature-rich mobile applications without having to worry about the backend.
 
 
 ## Architecture
@@ -20,7 +20,7 @@ cd noderedOnOCI
 export TF_VAR_tenancy_ocid='<tenancy-ocid>'
 export TF_VAR_compartment_ocid='<comparment-ocid>'
 export TF_VAR_region='<home-region>'
-export TF_VAR_Node_red_pass=<password>
+export TF_VAR_Parse_pass=<password>
 
 
 <optional>
@@ -41,10 +41,3 @@ terraform init
 terraform plan
 terraform apply
 ```
-
-
-**After applying, the service will be ready in about 5 minutes** (it will install OS dependencies, as well as the packages needed to get openMPI to work)
-
-## Post configuration
-
-You can use MQTTBox chrome client to test MQTT
