@@ -58,7 +58,7 @@ node --version
 
 
 
-
+sleep 5
 
 ##install parse
 yarn global add parse-server
@@ -81,14 +81,14 @@ systemctl start parse.server.service
 systemctl enable parse.server.service
 
 
-
+sleep 5
 ##dashboard
 
 yarn global add parse-dashboard
 
 
 wget https://raw.githubusercontent.com/badr42/parse_on_OCI/main/parse.server.service
-mv parse.server.service /etc/systemd/system/parse.server.service
+sudo mv parse.server.service /etc/systemd/system/parse.server.service
 
 #nano parse-dashboard-config.json  //replace with curl
 
@@ -101,13 +101,15 @@ sed -i "s/parserpass/$pass/g" /home/ubuntu/parse-dashboard-config.json
 
 ##nano parse.server.dashboard.service  //replace with curl /etc/systemd/system/
 
-systemctl daemon-reload
+sudo systemctl daemon-reload
 
 
-systemctl start parse.server.service
+sudo systemctl start parse.server.service
 
-systemctl start parse.server.dashboard.service
-systemctl enable parse.server.dashboard.service
+
+sudo systemctl stop parse.server.dashboard.service
+sudo systemctl start parse.server.dashboard.service
+sudo systemctl enable parse.server.dashboard.service
 
 
 echo "Completed setup"

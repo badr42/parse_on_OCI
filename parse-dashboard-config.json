@@ -2,8 +2,8 @@
     "apps": [
       {
         "serverURL": "http://localhost:1337/parse",
-        "appId": "SCWASRTWK9Y6AVMP3KFC",
-        "masterKey": "LASDK823JKHR87SDFJSDHF8DFHASFDF",
+        "appId": "SCWASRBMT9Y6AVMP3KFC",
+        "masterKey": "LASDK823JBMT87SDFJSDHF8KFCASFDF",
         "allowInsecureHTTP": "true",
         "appName": "ParseApp"
       }
