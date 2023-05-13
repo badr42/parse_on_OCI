@@ -21,9 +21,9 @@ sudo iptables -P OUTPUT ACCEPT
 sudo iptables -P FORWARD ACCEPT
 sudo iptables -F
 
-DEBIAN_FRONTEND=noninteractive sudo apt update
-DEBIAN_FRONTEND=noninteractive sudo  apt upgrade -y
-DEBIAN_FRONTEND=noninteractive sudo apt install -y vim
+# DEBIAN_FRONTEND=noninteractive sudo apt update
+# DEBIAN_FRONTEND=noninteractive sudo  apt upgrade -y
+# DEBIAN_FRONTEND=noninteractive sudo apt install -y vim
 
 
 wget https://raw.githubusercontent.com/badr42/parse_on_OCI/main/config.json
@@ -46,12 +46,17 @@ DEBIAN_FRONTEND=noninteractive sudo systemctl start mongod
 
 
 ###install nodejs
-sudo apt-get update
-sudo su - 
-sudo curl -sL https://deb.nodesource.com/setup_lts.x | bash -
+# sudo apt-get update
+# sudo su - 
+sudo curl -sL https://deb.nodesource.com/setup_lts.x | sudo bash -
 DEBIAN_FRONTEND=noninteractive sudo apt install nodejs -y
 DEBIAN_FRONTEND=noninteractive sudo apt install npm -y
-DEBIAN_FRONTEND=noninteractive npm install -g yarn
+
+curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | gpg --dearmor | sudo tee /usr/share/keyrings/yarnkey.gpg >/dev/null
+echo "deb [signed-by=/usr/share/keyrings/yarnkey.gpg] https://dl.yarnpkg.com/debian stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+
+sudo apt-get update && sudo apt-get install yarn
+DEBIAN_FRONTEND=noninteractive sudo npm install -g yarn
 
 
 #node --version
@@ -62,7 +67,7 @@ DEBIAN_FRONTEND=noninteractive npm install -g yarn
 sleep 5
 
 ##install parse
-yarn global add parse-server
+sudo yarn global add parse-server
 #nano config.json  //replace with curl
 
 
@@ -70,26 +75,24 @@ yarn global add parse-server
 #nohup parse-server config.json &
 
 #create service
-
-wget https://raw.githubusercontent.com/badr42/parse_on_OCI/main/parse.server.dashboard.service
-mv parse.server.dashboard.service /etc/systemd/system/parse.server.dashboard.service
-
+wget https://raw.githubusercontent.com/badr42/parse_on_OCI/main/parse.server.service
+sudo mv parse.server.service /etc/systemd/system/parse.server.service
 
 
-systemctl start parse.server.service
+sudo systemctl start parse.server.service
 
 #systemctl status parse.server.service
-systemctl enable parse.server.service
+sudo systemctl enable parse.server.service
 
 
 sleep 5
 ##dashboard
 
-yarn global add parse-dashboard
+sudo yarn global add parse-dashboard
 
+wget https://raw.githubusercontent.com/badr42/parse_on_OCI/main/parse.server.dashboard.service
+sudo mv parse.server.service /etc/systemd/system/parse.server.dashboard.service
 
-wget https://raw.githubusercontent.com/badr42/parse_on_OCI/main/parse.server.service
-sudo mv parse.server.service /etc/systemd/system/parse.server.service
 
 #nano parse-dashboard-config.json  //replace with curl
 
